@@ -1,0 +1,8 @@
+platform :ios, '9.0'
+
+target 'Ios Maps' do
+use_frameworks!
+	pod 'GoogleMaps'
+  	pod 'GooglePlaces'
+
+end

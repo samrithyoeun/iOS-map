@@ -15,20 +15,19 @@ class AppleMapKitViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 200
-    let mapServiceIsEnable  = CLLocationManager.locationServicesEnabled()
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
         setUpMapKit()
         
-        if mapServiceIsEnable {
+        if CLLocationManager.locationServicesEnabled() {
             setUpDirection()
         }
     }
     
     @IBAction func currentLocationButtonTapped(_ sender: UIButton) {
-        if mapServiceIsEnable {
+        if CLLocationManager.locationServicesEnabled() {
             locationManager.updateLocation()
             let currentLocation = locationManager.location?.coordinate
             if let currentLocation = currentLocation {
@@ -45,6 +44,8 @@ class AppleMapKitViewController: UIViewController {
         mapKitView.showsScale = true
         mapKitView.showsPointsOfInterest = true
         mapKitView.showsUserLocation = true
+        
+        locationManager.requestAuthorization()
     }
     
     private func setUpDirection(){
@@ -58,11 +59,9 @@ class AppleMapKitViewController: UIViewController {
         let destinationAnnotation = MKPointAnnotation()
         destinationAnnotation.coordinate = destinationLoacation
         
-        
         mapKitView.addAnnotation(sourceAnnotation)
         mapKitView.addAnnotation(destinationAnnotation)
-        locationManager.requestAuthorization()
-        locationManager.updateLocation()
+        
         locationManager.getDirection(from: sourceLocation, to: destinationLoacation) { (result) in
             switch result {
             case .failure(let error):
@@ -83,8 +82,6 @@ class AppleMapKitViewController: UIViewController {
         renderer.lineWidth = 5
         return renderer
     }
-    
-    
     
 }
 
