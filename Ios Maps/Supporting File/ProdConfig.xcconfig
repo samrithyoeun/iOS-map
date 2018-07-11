@@ -1,0 +1,9 @@
+//
+//  ProdConfig.xcconfig
+//  Project
+//
+//  Created by Ricky_DO on 3/20/18.
+//  Copyright © 2018 Pathmazing. All rights reserved.
+//
+
+SERVER_ENVIRONMENT=PROD_ENVIRONMENT

@@ -1,0 +1,265 @@
+{
+  "status" : "OK",
+  "routes" : [
+    {
+      "summary" : "Taylor St",
+      "copyrights" : "Map data ©2018 Google",
+      "overview_polyline" : {
+        "points" : "{~reFbmbjVlEbGtDdFZb@BNj@hIH~@}Df@qJjAwJhAuJhAsA}SmA{R_@sFEw@wBVkD^qGx@mD`@k@eIWmF[}EKgBK_AKs@MwBMaBQiC?WYoEEWMBqAPcAJW_BMyBE_@e@kA"
+      },
+      "bounds" : {
+        "northeast" : {
+          "lat" : 37.796735599999998,
+          "lng" : -122.3952567
+        },
+        "southwest" : {
+          "lat" : 37.783214200000003,
+          "lng" : -122.412102
+        }
+      },
+      "waypoint_order" : [
+
+      ],
+      "warnings" : [
+
+      ],
+      "legs" : [
+        {
+          "start_location" : {
+            "lat" : 37.785576200000001,
+            "lng" : -122.4060982
+          },
+          "end_address" : "496 The Embarcadero, San Francisco, CA 94105, USA",
+          "end_location" : {
+            "lat" : 37.796735599999998,
+            "lng" : -122.3952567
+          },
+          "start_address" : "801 Market St, San Francisco, CA 94103, USA",
+          "steps" : [
+            {
+              "start_location" : {
+                "lat" : 37.785576200000001,
+                "lng" : -122.4060982
+              },
+              "polyline" : {
+                "points" : "{~reFbmbjVPTLNPRl@|@h@t@Z`@\\f@HJLN|AxBt@`ARXZb@"
+              },
+              "end_location" : {
+                "lat" : 37.783495100000003,
+                "lng" : -122.40872899999999
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "0.2 mi",
+                "value" : 327
+              },
+              "html_instructions" : "Head <b>southwest<\/b> on <b>Market St<\/b> toward <b>Stockton St<\/b>",
+              "duration" : {
+                "text" : "2 mins",
+                "value" : 109
+              }
+            },
+            {
+              "start_location" : {
+                "lat" : 37.783495100000003,
+                "lng" : -122.40872899999999
+              },
+              "polyline" : {
+                "points" : "{qreFp}bjVBNH`A`@fGH~@"
+              },
+              "end_location" : {
+                "lat" : 37.783214200000003,
+                "lng" : -122.41078419999999
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "0.1 mi",
+                "value" : 183
+              },
+              "html_instructions" : "Slight <b>right<\/b> onto <b>Turk St<\/b>",
+              "maneuver" : "turn-slight-right",
+              "duration" : {
+                "text" : "1 min",
+                "value" : 60
+              }
+            },
+            {
+              "start_location" : {
+                "lat" : 37.783214200000003,
+                "lng" : -122.41078419999999
+              },
+              "polyline" : {
+                "points" : "apreFjjcjV}Df@yDd@wDd@{Dd@w@HeAJ}@Lu@HcAL}@J}Dd@"
+              },
+              "end_location" : {
+                "lat" : 37.789757700000003,
+                "lng" : -122.412102
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "0.5 mi",
+                "value" : 737
+              },
+              "html_instructions" : "Turn <b>right<\/b> onto <b>Taylor St<\/b><div style=\"font-size:0.9em\">Pass by Walgreens (on the left in 0.3&nbsp;mi)<\/div>",
+              "maneuver" : "turn-right",
+              "duration" : {
+                "text" : "3 mins",
+                "value" : 196
+              }
+            },
+            {
+              "start_location" : {
+                "lat" : 37.789757700000003,
+                "lng" : -122.412102
+              },
+              "polyline" : {
+                "points" : "_yseFrrcjVg@gIg@yHAMAMQ{CAQIgAEk@AYIgAI{AS{CGmAKuAG{@CSEw@"
+              },
+              "end_location" : {
+                "lat" : 37.790763200000001,
+                "lng" : -122.4040735
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "0.4 mi",
+                "value" : 714
+              },
+              "html_instructions" : "Turn <b>right<\/b> onto <b>Bush St<\/b><div style=\"font-size:0.9em\">Pass by Starbucks (on the right in 0.3&nbsp;mi)<\/div>",
+              "maneuver" : "turn-right",
+              "duration" : {
+                "text" : "2 mins",
+                "value" : 149
+              }
+            },
+            {
+              "start_location" : {
+                "lat" : 37.790763200000001,
+                "lng" : -122.4040735
+              },
+              "polyline" : {
+                "points" : "g_teFl`bjVwBVaALiBPmANE@C?yDf@uANwAP"
+              },
+              "end_location" : {
+                "lat" : 37.794462500000002,
+                "lng" : -122.4048118
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "0.3 mi",
+                "value" : 416
+              },
+              "html_instructions" : "Turn <b>left<\/b> onto <b>Kearny St<\/b>",
+              "maneuver" : "turn-left",
+              "duration" : {
+                "text" : "2 mins",
+                "value" : 109
+              }
+            },
+            {
+              "start_location" : {
+                "lat" : 37.794462500000002,
+                "lng" : -122.4048118
+              },
+              "polyline" : {
+                "points" : "kvteF`ebjV_@oFKuAQaD?GA[Cg@K_BO}BKgBK_AG]CUEq@GeAEc@AMC_@AOAK?E?CCWAOAKCe@CY?WYoE"
+              },
+              "end_location" : {
+                "lat" : 37.795483399999988,
+                "lng" : -122.396835
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "0.4 mi",
+                "value" : 711
+              },
+              "html_instructions" : "Turn <b>right<\/b> after Subway Restaurants (on the left)<div style=\"font-size:0.9em\">Pass by Starbucks (on the right)<\/div>",
+              "maneuver" : "turn-right",
+              "duration" : {
+                "text" : "3 mins",
+                "value" : 200
+              }
+            },
+            {
+              "start_location" : {
+                "lat" : 37.795483399999988,
+                "lng" : -122.396835
+              },
+              "polyline" : {
+                "points" : "w|teFfs`jVEWMBSB}@Lw@HK@"
+              },
+              "end_location" : {
+                "lat" : 37.796331000000002,
+                "lng" : -122.39689199999999
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "338 ft",
+                "value" : 103
+              },
+              "html_instructions" : "Turn <b>left<\/b> after The UPS Store (on the right)",
+              "maneuver" : "turn-left",
+              "duration" : {
+                "text" : "1 min",
+                "value" : 31
+              }
+            },
+            {
+              "start_location" : {
+                "lat" : 37.796331000000002,
+                "lng" : -122.39689199999999
+              },
+              "polyline" : {
+                "points" : "abueFps`jVAMCMOw@AKAQGs@A[AWCWAGGU]u@"
+              },
+              "end_location" : {
+                "lat" : 37.796735599999998,
+                "lng" : -122.3952567
+              },
+              "travel_mode" : "DRIVING",
+              "distance" : {
+                "text" : "0.1 mi",
+                "value" : 153
+              },
+              "html_instructions" : "Turn <b>right<\/b> onto <b>Washington St<\/b>",
+              "maneuver" : "turn-right",
+              "duration" : {
+                "text" : "1 min",
+                "value" : 46
+              }
+            }
+          ],
+          "distance" : {
+            "text" : "2.1 mi",
+            "value" : 3344
+          },
+          "traffic_speed_entry" : [
+
+          ],
+          "duration" : {
+            "text" : "15 mins",
+            "value" : 900
+          },
+          "via_waypoint" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "geocoded_waypoints" : [
+    {
+      "types" : [
+        "street_address"
+      ],
+      "geocoder_status" : "OK",
+      "place_id" : "ChIJ0_gCFoaAhYARolKQ0Am06yA"
+    },
+    {
+      "types" : [
+        "street_address"
+      ],
+      "geocoder_status" : "OK",
+      "place_id" : "ChIJq971KGeAhYARuwuvzsOGH9M"
+    }
+  ]
+}

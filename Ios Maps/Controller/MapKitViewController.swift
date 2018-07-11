@@ -9,8 +9,8 @@
 import UIKit
 import MapKit
 
-class AppleMapKitViewController: UIViewController {
-   
+class MapKitViewController: UIViewController {
+    
     @IBOutlet weak var mapKitView: MKMapView!
     
     let locationManager = CLLocationManager()
@@ -18,9 +18,9 @@ class AppleMapKitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        setUpMapKit()
         
+        setUpMapKit()
+        locationManager.requestAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             setUpDirection()
         }
@@ -36,20 +36,17 @@ class AppleMapKitViewController: UIViewController {
                 print("cannot get current location")
             }
         }
-        
     }
-
+    
     private func setUpMapKit(){
         mapKitView.delegate = self
         mapKitView.showsScale = true
         mapKitView.showsPointsOfInterest = true
         mapKitView.showsUserLocation = true
-        
         locationManager.requestAuthorization()
     }
     
     private func setUpDirection(){
-        
         let sourceLocation = CLLocationCoordinate2DMake(37.747608, -122.411985)
         let destinationLoacation = CLLocationCoordinate2DMake(37.757645, -122.439963)
         
@@ -70,11 +67,15 @@ class AppleMapKitViewController: UIViewController {
                 print("sucess")
                 let route = response.routes[0]
                 self.mapKitView.add(route.polyline, level: .aboveLabels)
-                var rect = route.polyline.boundingMapRect
+                let rect = route.polyline.boundingMapRect
                 self.mapKitView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
             }
         }
     }
+    
+}
+
+extension MapKitViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
@@ -82,9 +83,5 @@ class AppleMapKitViewController: UIViewController {
         renderer.lineWidth = 5
         return renderer
     }
-    
-}
-
-extension AppleMapKitViewController: MKMapViewDelegate {
     
 }
