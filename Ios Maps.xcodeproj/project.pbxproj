@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5328FC0C20F6FEDF009FE972 /* CLLocationEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328FC0B20F6FEDF009FE972 /* CLLocationEx.swift */; };
 		5348CD4620F59E5E006EF673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5348CD4520F59E5E006EF673 /* AppDelegate.swift */; };
 		5348CD4820F59E5E006EF673 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5348CD4720F59E5E006EF673 /* MapKitViewController.swift */; };
 		5348CD4A20F59E5E006EF673 /* GMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5348CD4920F59E5E006EF673 /* GMSViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5328FC0B20F6FEDF009FE972 /* CLLocationEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationEx.swift; sourceTree = "<group>"; };
 		5348CD4220F59E5E006EF673 /* Ios Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ios Maps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5348CD4520F59E5E006EF673 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5348CD4720F59E5E006EF673 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				5348CD6220F5BCBF006EF673 /* CLLocationManagerEx.swift */,
+				5328FC0B20F6FEDF009FE972 /* CLLocationEx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				5348CD4A20F59E5E006EF673 /* GMSViewController.swift in Sources */,
 				5348CD6320F5BCBF006EF673 /* CLLocationManagerEx.swift in Sources */,
 				5348CD4620F59E5E006EF673 /* AppDelegate.swift in Sources */,
+				5328FC0C20F6FEDF009FE972 /* CLLocationEx.swift in Sources */,
 				CDAFAF8320F6633E001D9CAB /* APIRequest.swift in Sources */,
 				CDAFAF8B20F66650001D9CAB /* Config.swift in Sources */,
 				5348CD4820F59E5E006EF673 /* MapKitViewController.swift in Sources */,

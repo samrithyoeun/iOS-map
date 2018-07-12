@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
+import Polyline
 
 class MapKitViewController: UIViewController {
     
@@ -22,7 +24,9 @@ class MapKitViewController: UIViewController {
         setUpMapKit()
         locationManager.requestAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            setUpDirection()
+            let bayonMarket = CLLocation(latitude: 11.570886, longitude: 104.916407)
+            let phnomPenhAirport = CLLocation(latitude: 11.552773, longitude: 104.844473)
+            setDrivingDirection(from: bayonMarket, to: phnomPenhAirport, in: mapKitView)
         }
     }
     
@@ -36,6 +40,7 @@ class MapKitViewController: UIViewController {
                 print("cannot get current location")
             }
         }
+        
     }
     
     private func setUpMapKit(){
@@ -68,6 +73,38 @@ class MapKitViewController: UIViewController {
                 let route = response.routes[0]
                 self.mapKitView.add(route.polyline, level: .aboveLabels)
                 let rect = route.polyline.boundingMapRect
+                self.mapKitView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+            }
+        }
+    }
+    
+    private func setDrivingDirection(from startLocation: CLLocation, to endLocation: CLLocation, in mapView: MKMapView) {
+        let origin = "\(startLocation.coordinate.latitude),\(startLocation.coordinate.longitude)"
+        let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
+        
+        let endpoint = "origin=\(origin)&destination=\(destination)&mode=driving&key=\(Config.key)"
+        APIRequest.get(endPoint: endpoint) { (json, code, error) in
+            let json = JSON(json)
+            print("JSON: \(json)")
+            let routes = json["routes"].arrayValue
+            for route in routes
+            {
+                let routeOverviewPolyline = route["overview_polyline"].dictionary
+                let points = routeOverviewPolyline?["points"]?.stringValue
+                let polyline = Polyline(encodedPolyline: points!)
+                let decodedLocations: [CLLocationCoordinate2D]? = polyline.coordinates
+                let mkPolyline = MKPolyline(coordinates: decodedLocations!, count: (decodedLocations?.count)!)
+                self.mapKitView.add(mkPolyline, level: .aboveLabels)
+                
+                let sourceAnnotation = MKPointAnnotation()
+                sourceAnnotation.coordinate = startLocation.getCLLocationCoordinate2D()
+                
+                let destinationAnnotation = MKPointAnnotation()
+                destinationAnnotation.coordinate = endLocation.getCLLocationCoordinate2D()
+                
+                mapView.addAnnotation(sourceAnnotation)
+                mapView.addAnnotation(destinationAnnotation)
+                let rect = mkPolyline.boundingMapRect
                 self.mapKitView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
             }
         }

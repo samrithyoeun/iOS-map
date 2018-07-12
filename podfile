@@ -6,5 +6,5 @@ use_frameworks!
   	pod 'GooglePlaces', '2.7.0'
 	pod 'Alamofire', '4.7.3'
     pod 'SwiftyJSON', '4.1.0'
-    pod 'Polyline', '~> 4.0'
+    pod 'Polyline', '4.2.0'
 end

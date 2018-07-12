@@ -22,13 +22,17 @@ class GMSViewController: UIViewController {
     let destination = CLLocation(latitude: 37.796950, longitude: -122.394996)
     var currentLocation: CLLocationCoordinate2D?
     var mapView: GMSMapView!
-    var zoomLevel = 15.0
     var camera = GMSCameraPosition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGMS()
-        setDirection()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            let bayonMarket = CLLocation(latitude: 11.570886, longitude: 104.916407)
+            let phnomPenhAirport = CLLocation(latitude: 11.552773, longitude: 104.844473)
+            setDrivingDirection(from: bayonMarket, to: phnomPenhAirport, in: mapView)
+        }
     }
     
     @IBAction func currentLocationButtonClicked(_ sender: Any) {
@@ -36,32 +40,13 @@ class GMSViewController: UIViewController {
             switch result {
             case .success(let currentLocation) :
                 print(currentLocation)
-                let marker = GMSMarker(position: currentLocation)
-                marker.title = "You are here"
-                marker.map = self.mapView
-                self.camera = GMSCameraPosition(target: currentLocation, zoom: 15, bearing: 60, viewingAngle: 90)
+                let marker = self.createMarker(at: currentLocation, title: "You are here", in: self.mapView)
+                marker.icon = UIImage(named: "pin")
+                self.camera = GMSCameraPosition.camera(withTarget: currentLocation, zoom: 15.0)
                 self.mapView.animate(to: self.camera)
                 self.mapView.selectedMarker = marker
-                
             case .failure(let error):
                 print(error)
-            }
-        }
-    }
-    
-    private func setDirection(){
-        let source = CLLocation(latitude: 37.747608, longitude: -122.411985)
-        let dest = CLLocation(latitude: 37.757645, longitude: -122.439963)
-        self.drawPath(from: source, to: dest, in: self.mapView)
-    }
-    
-    private func getCurrentLocation(callback: @escaping (Result<CLLocationCoordinate2D>) ->() ){
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-            if let currentLocation = locationManager.location?.coordinate {
-                callback(Result.success(currentLocation))
-            } else {
-                callback(Result.failure("cannot get current location"))
             }
         }
     }
@@ -78,7 +63,18 @@ class GMSViewController: UIViewController {
         
     }
     
-    private func drawPath(from startLocation: CLLocation, to endLocation: CLLocation, in mapView: GMSMapView) {
+    private func getCurrentLocation(callback: @escaping (Result<CLLocationCoordinate2D>) ->() ){
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            if let currentLocation = locationManager.location?.coordinate {
+                callback(Result.success(currentLocation))
+            } else {
+                callback(Result.failure("cannot get current location"))
+            }
+        }
+    }
+    
+    private func setDrivingDirection(from startLocation: CLLocation, to endLocation: CLLocation, in mapView: GMSMapView) {
         let origin = "\(startLocation.coordinate.latitude),\(startLocation.coordinate.longitude)"
         let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
         
@@ -93,14 +89,22 @@ class GMSViewController: UIViewController {
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
-                polyline.strokeWidth = 5
+                polyline.strokeWidth = 8
                 polyline.strokeColor = UIColor.red
                 polyline.map = mapView
+                let _ = self.createMarker(at: startLocation.getCLLocationCoordinate2D(), title: "", in: mapView)
+                let _ = self.createMarker(at: endLocation.getCLLocationCoordinate2D(), title: "", in: mapView)
                 mapView.animate(with: GMSCameraUpdate.fit(GMSCoordinateBounds(path: polyline.path!), withPadding: 10))
             }
         }
     }
     
+    private func createMarker(at position: CLLocationCoordinate2D, title: String, in mapView: GMSMapView ) -> GMSMarker{
+        let marker = GMSMarker(position: position)
+        marker.title = title
+        marker.map = mapView
+        return marker
+    }
 }
 
 extension GMSViewController: CLLocationManagerDelegate {
