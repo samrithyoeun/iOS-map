@@ -51,33 +51,6 @@ class MapKitViewController: UIViewController {
         locationManager.requestAuthorization()
     }
     
-    private func setUpDirection(){
-        let sourceLocation = CLLocationCoordinate2DMake(37.747608, -122.411985)
-        let destinationLoacation = CLLocationCoordinate2DMake(37.757645, -122.439963)
-        
-        let sourceAnnotation = MKPointAnnotation()
-        sourceAnnotation.coordinate = sourceLocation
-        
-        let destinationAnnotation = MKPointAnnotation()
-        destinationAnnotation.coordinate = destinationLoacation
-        
-        mapKitView.addAnnotation(sourceAnnotation)
-        mapKitView.addAnnotation(destinationAnnotation)
-        
-        locationManager.getDirection(from: sourceLocation, to: destinationLoacation) { (result) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let response):
-                print("sucess")
-                let route = response.routes[0]
-                self.mapKitView.add(route.polyline, level: .aboveLabels)
-                let rect = route.polyline.boundingMapRect
-                self.mapKitView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
-            }
-        }
-    }
-    
     private func setDrivingDirection(from startLocation: CLLocation, to endLocation: CLLocation, in mapView: MKMapView) {
         let origin = "\(startLocation.coordinate.latitude),\(startLocation.coordinate.longitude)"
         let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
@@ -87,8 +60,7 @@ class MapKitViewController: UIViewController {
             let json = JSON(json)
             print("JSON: \(json)")
             let routes = json["routes"].arrayValue
-            for route in routes
-            {
+            for route in routes {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let polyline = Polyline(encodedPolyline: points!)

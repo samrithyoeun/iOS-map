@@ -21,7 +21,7 @@ extension CLLocationManager {
         startUpdatingLocation()
     }
     
-    func getDirection(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, callback: @escaping (Result<MKDirectionsResponse>) ->() ) {
+    func getDirection(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, callback: @escaping (Result<MKDirectionsResponse>)->() ){
         
         let sourcePlaceMark = MKPlacemark(coordinate: source)
         let destinationPlaceMark = MKPlacemark(coordinate: destination)
@@ -46,8 +46,7 @@ extension CLLocationManager {
         }
     }
     
-    static func zoomTo(location: CLLocationCoordinate2D, in mapview: MKMapView)
-    {
+    static func zoomTo(location: CLLocationCoordinate2D, in mapview: MKMapView) {
         let viewRegion = MKCoordinateRegionMakeWithDistance(location, 200, 200)
         mapview.setRegion(viewRegion, animated: true)
     }
