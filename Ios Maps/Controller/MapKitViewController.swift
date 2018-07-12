@@ -25,8 +25,7 @@ class MapKitViewController: UIViewController {
         locationManager.requestAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             let bayonMarket = CLLocation(latitude: 11.570886, longitude: 104.916407)
-            let phnomPenhAirport = CLLocation(latitude: 11.552773, longitude: 104.844473)
-            setDrivingDirection(from: bayonMarket, to: phnomPenhAirport, in: mapKitView)
+           
         }
     }
     
@@ -36,6 +35,9 @@ class MapKitViewController: UIViewController {
             let currentLocation = locationManager.location?.coordinate
             if let currentLocation = currentLocation {
                 CLLocationManager.zoomTo(location: currentLocation, in: mapKitView)
+                let here = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+                let phnomPenhAirport = CLLocation(latitude: 11.552773, longitude: 104.844473)
+                setDrivingDirection(from: here, to: phnomPenhAirport, in: mapKitView)
             } else {
                 print("cannot get current location")
             }

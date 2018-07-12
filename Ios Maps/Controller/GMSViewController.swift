@@ -27,12 +27,6 @@ class GMSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGMS()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            let bayonMarket = CLLocation(latitude: 11.570886, longitude: 104.916407)
-            let phnomPenhAirport = CLLocation(latitude: 11.552773, longitude: 104.844473)
-            setDrivingDirection(from: bayonMarket, to: phnomPenhAirport, in: mapView)
-        }
     }
     
     @IBAction func currentLocationButtonClicked(_ sender: Any) {
@@ -45,6 +39,9 @@ class GMSViewController: UIViewController {
                 self.camera = GMSCameraPosition.camera(withTarget: currentLocation, zoom: 15.0)
                 self.mapView.animate(to: self.camera)
                 self.mapView.selectedMarker = marker
+                let here = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+                let phnomPenhAirport = CLLocation(latitude: 11.552773, longitude: 104.844473)
+                self.setDrivingDirection(from: here, to: phnomPenhAirport, in: self.mapView)
             case .failure(let error):
                 print(error)
             }
